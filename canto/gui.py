@@ -631,7 +631,7 @@ class Gui(BaseGui) :
         utility.goto((self.sel["item"]["title"], self.sel["item"]["link"], "link"), self.cfg)
 
     def help(self):
-        self.cfg.wait_for_pid = utility.silentfork("man canto", "", 1, 0)
+        self.cfg.wait_for_pid = utility.silentfork("man canto", "", "", 1, 0)
 
     @noitem_unsafe
     def reader(self) :

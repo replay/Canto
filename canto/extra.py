@@ -300,7 +300,7 @@ def wget_link(path):
             return
 
         cmd = "wget -P \"" + path + "\" \"%u\""
-        utility.silentfork(cmd, url, 0, 0)
+        utility.silentfork(cmd, url, "", 0, 0)
 
     return do_wget
 
