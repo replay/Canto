@@ -59,7 +59,7 @@ class Cycle():
             return self.over
         return self.list[self.idx]
 
-def silentfork(path, href, text, fetch):
+def silentfork(path, href, title, text, fetch):
 
     enc = locale.getpreferredencoding()
     href = href.encode(enc, "ignore")
@@ -84,8 +84,10 @@ def silentfork(path, href, text, fetch):
             os.write(fd, data)
             os.close(fd)
             path = path.replace("%u", name)
+            path = path.replace("%t", title)
         else:
             path = path.replace("%u", href)
+            path = path.replace("%t", title)
 
         os.execv("/bin/sh", ["/bin/sh", "-c", path])
         sys.exit(0)
@@ -116,9 +118,9 @@ def goto(link, cfg):
         href = href.replace("\"","%22")
 
         if text:
-            cfg.wait_for_pid = silentfork(binary, href, 1, fetch)
+            cfg.wait_for_pid = silentfork(binary, href, title, 1, fetch)
         else:
-            silentfork(binary, href, 0, fetch)
+            silentfork(binary, href, title, 0, fetch)
     else:
         cfg.log("No handler set for %s" % handler)
 

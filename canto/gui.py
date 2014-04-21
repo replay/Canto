@@ -628,7 +628,7 @@ class Gui(BaseGui) :
     def goto(self) :        
         self.sel["tag"].set_read(self.sel["item"])
         self.draw_elements()
-        utility.goto(("", self.sel["item"]["link"], "link"), self.cfg)
+        utility.goto((self.sel["item"]["title"], self.sel["item"]["link"], "link"), self.cfg)
 
     def help(self):
         self.cfg.wait_for_pid = utility.silentfork("man canto", "", 1, 0)
