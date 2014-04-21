@@ -84,11 +84,10 @@ def silentfork(path, href, title, text, fetch):
             os.write(fd, data)
             os.close(fd)
             path = path.replace("%u", name)
-            path = path.replace("%t", title)
         else:
             path = path.replace("%u", href)
-            path = path.replace("%t", title)
 
+        path = path.replace("%t", title)
         os.execv("/bin/sh", ["/bin/sh", "-c", path])
         sys.exit(0)
 
