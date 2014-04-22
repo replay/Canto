@@ -536,6 +536,12 @@ class Gui(BaseGui) :
                 break
             self.prev_item()
 
+    @noitem_unsafe
+    @change_selected
+    def goto_first(self):
+        self.sel = self.map[0]
+        return REDRAW_ALL
+
     # Goto_tag goes to an absolute #'d tag. So the third
     # tag defined in your configuration will always be '3'
 
